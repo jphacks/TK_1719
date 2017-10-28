@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  mysql:
+    volumes:
+    - data-mysql:/var/lib/mysql
+  php:
+    image: jphacks:latest
+    build: php_server_dev
+    volumes:
+    - .:/server
+  web:
+    ports:
+    - "8111:80"
+    volumes:
+    - .:/server
+
+volumes:
+  data-mysql:
+    driver: local

@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+    - MYSQL_ROOT_PASSWORD=jphacks
+    - MYSQL_DATABASE=jphacks
+    - MYSQL_USER=jphacks
+    - MYSQL_PASSWORD=jphacks
+  php:
+    image: jphacks_php
+    restart: always
+    depends_on:
+    - mysql
+    volumes:
+    - ./php_server/entry.sh:/script/entry.sh
+    - ./php_server/php.ini:/usr/local/etc/php/php.ini
+    - ./php_server/my.cnf:/etc/mysql/conf.d/my.cnf
+    environment:
+    - DBSERVER=mysql
+    command: /script/entry.sh
+  web:
+    image: nginx:alpine
+    depends_on:
+    - php
+    volumes:
+    - ./web_server/default.conf:/etc/nginx/conf.d/default.conf
