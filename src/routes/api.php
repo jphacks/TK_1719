@@ -20,14 +20,12 @@ Route::middleware('api')->prefix('v1')->group(function () {
         //Route::get('user/{user_id}/shelves', 'Api\V1\UserController@showShelves');
         //Route::get('user/{user_id}/shelves/favorite', 'Api\V1\UserController@showFavorite');
 
-        /*
-        Route::get('book/{book_id}', 'Api\V1\BookController@show');
-        Route::post('book/{book_id}/store', 'Api\V1\BookController@store');
-        Route::post('book/{book_id}/update', 'Api\V1\BookController@update');
-        Route::post('book/{book_id}/delete', 'Api\V1\BookController@delete');
-        Route::post('book/{book_id}/shelf/{shelf_id}/add', 'Api\V1\BookController@addToShelf');
-        Route::post('book/{book_id}/shelf/{shelf_id}/remove', 'Api\V1\BookController@removeFromShelf');
-         */
+        Route::get('collection/{collection_id}', 'Api\V1\CollectionController@show');
+        Route::post('collection/store', 'Api\V1\CollectionController@store');
+        Route::post('collection/{collection_id}/attach', 'Api\V1\CollectionController@attach');
+        Route::post('collection/{collection_id}/delete', 'Api\V1\CollectionController@delete');
+        //Route::post('collection/{collection_id}/shelf/{shelf_id}/add', 'Api\V1\CollectionController@addToShelf');
+        //Route::post('collection/{collection_id}/shelf/{shelf_id}/remove', 'Api\V1\CollectionController@removeFromShelf');
 
         Route::get('shelf/{shelf_id}', 'Api\V1\ShelfController@show');
         //Route::get('shelf/search', 'Api\V1\ShelfController@search');
