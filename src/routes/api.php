@@ -23,7 +23,6 @@ Route::middleware('api')->prefix('v1')->group(function () {
         Route::post('collection/{collection_id}/update', 'Api\V1\CollectionController@update');
         Route::post('collection/{collection_id}/delete', 'Api\V1\CollectionController@delete');
         Route::post('collection/{collection_id}/shelf/{shelf_id}/attach', 'Api\V1\CollectionController@attach');
-        Route::post('collection/{collection_id}/shelf/{shelf_id}/detach', 'Api\V1\CollectionController@detach');
 
         Route::get('shelf/{shelf_id}', 'Api\V1\ShelfController@show');
         //Route::get('shelf/search', 'Api\V1\ShelfController@search');
