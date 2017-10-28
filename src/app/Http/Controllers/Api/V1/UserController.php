@@ -24,11 +24,6 @@ class UserController extends Controller
         ], 200);
     }
 
-    public function store(StoreUserRequest $request)
-    {
-        //Not implement yet
-    }
-
     public function update(UpdateUserRequest $request, int $userId)
     {
         $user = auth()->user();
