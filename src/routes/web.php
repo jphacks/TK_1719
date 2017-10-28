@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/{any}', function () {
-    return view('welcome');
-})->where('any', '(?!log).*');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/{any}', function () {
+        return view('welcome');
+    })->where('any', '(?!log).*');
+});
 
 Auth::routes();
 
