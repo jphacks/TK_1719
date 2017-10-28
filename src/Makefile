@@ -16,5 +16,5 @@ build:
 test:
 	@./runtest.sh
 
-db_seed:
-	@./seeder.sh
+resetdb:
+	@./resetdb.sh
