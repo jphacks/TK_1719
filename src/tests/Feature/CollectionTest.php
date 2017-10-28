@@ -21,11 +21,29 @@ class CollectionTest extends TestCase
     public function testShow()
     {
         $user = factory(User::class)->create();
-        $collection = factory(Collection::class)->create();
+        $collection = factory(Collection::class)->create([
+            'user_id' => $user
+        ]);
         $response = $this->actingAs($user)
             ->get("api/v1/collection/$collection->id");
 
         $response->assertStatus(200);
+    }
+
+    public function testShowError()
+    {
+        $user = factory(User::class)->create();
+        $shelf = factory(Shelf::class)->create([
+            'is_secret' => 1,
+        ]);
+        $collection = factory(Collection::class)->create([
+            'shelf_id' => $shelf->id,
+            'user_id'  => $user->id,
+        ]);
+        $response = $this->actingAs($user)
+            ->get("api/v1/collection/$collection->id");
+
+        $response->assertStatus(400);
     }
 
     public function testStore()
