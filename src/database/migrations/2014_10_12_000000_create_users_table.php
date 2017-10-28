@@ -28,6 +28,15 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->unsignedInteger('owner_id');
+            $table->boolean('is_secret')->default(0);
+
+            $table->timestamps();
+        });
+        Schema::create('user_shelf_pairs', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('shelf_id');
+            $table->boolean('is_favorite')->default(0);
 
             $table->timestamps();
         });

@@ -45,4 +45,22 @@ class ShelfService
             return $shelf;
         });
     }
+
+    public function follow($shelfId, $user)
+    {
+        return DB::transaction(function () use ($shelfId, $user) {
+            $shelf = $this->shelfRepository->findOrFail($shelfId);
+            $this->shelfRepository->follow($shelf, $user);
+            return $shelf;
+        });
+    }
+
+    public function refollow($shelfId, $user)
+    {
+        return DB::transaction(function () use ($shelfId, $user) {
+            $shelf = $this->shelfRepository->findOrFail($shelfId);
+            $this->shelfRepository->refollow($shelf, $user);
+            return $shelf;
+        });
+    }
 }

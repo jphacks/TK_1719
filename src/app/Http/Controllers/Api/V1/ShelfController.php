@@ -34,6 +34,7 @@ class ShelfController extends Controller
         $inputs = [
             'name'        => $request->input('name'),
             'description' => $request->input('description', ''),
+            'is_secret'   => $request->input('is_secret', 0),
         ];
         $user = auth()->user();
         $shelf = $this->shelfService->create($inputs, $user);
@@ -68,6 +69,26 @@ class ShelfController extends Controller
         return response()->json([
             'message' => 'Delete successful',
             'shelf' => $shelf
+        ], 200);
+    }
+
+    public function follow(int $shelfId)
+    {
+        $user = auth()->user();
+        $shelf = $this->shelfService->follow($shelfId, $user);
+        return response()->json([
+            'message' => 'Attach successful',
+            'shelf'   => $shelf,
+        ], 200);
+    }
+
+    public function refollow(int $shelfId)
+    {
+        $user = auth()->user();
+        $shelf = $this->shelfService->refollow($shelfId, $user);
+        return response()->json([
+            'message' => 'Detach successful',
+            'shelf'   => $shelf,
         ], 200);
     }
 }

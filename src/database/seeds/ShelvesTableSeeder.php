@@ -11,6 +11,7 @@ class ShelvesTableSeeder extends Seeder
             'name'        => 'root',
             'description' => 'Test data',
             'owner_id'    => '1',
+            'is_secret'   => 0,
         ]);
     }
 }

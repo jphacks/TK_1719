@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Shelf extends Model
 {
     protected $fillable = [
-        'name', 'description', 'owner_id'
+        'name', 'description', 'owner_id', 'is_secret'
     ];
 
     public function users()
     {
-        return $this->belongsToMany('App\Repositories\Eloqunet\User');
+        return $this->belongsToMany('App\Repositories\Eloqunet\User', 'user_shelf_pairs');
     }
 }

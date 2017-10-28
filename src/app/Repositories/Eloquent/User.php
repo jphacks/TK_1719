@@ -33,4 +33,9 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($value);
     }
+
+    public function shelves()
+    {
+        return $this->belongsToMany('App\Repositories\Eloquent\User', 'user_shelf_pairs');
+    }
 }

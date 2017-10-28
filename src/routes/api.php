@@ -17,8 +17,6 @@ Route::middleware('api')->prefix('v1')->group(function () {
         //Route::get('user/{user_id}/timeline', 'Api\V1\UserController@showTimeline');
         Route::get('user/{user_id}', 'Api\V1\UserController@showUser');
         Route::post('user/{user_id}/update', 'Api\V1\UserController@update');
-        //Route::get('user/{user_id}/shelves', 'Api\V1\UserController@showShelves');
-        //Route::get('user/{user_id}/shelves/favorite', 'Api\V1\UserController@showFavorite');
 
         Route::get('collection/{collection_id}', 'Api\V1\CollectionController@show');
         Route::post('collection/store', 'Api\V1\CollectionController@store');
@@ -32,6 +30,8 @@ Route::middleware('api')->prefix('v1')->group(function () {
         Route::post('shelf/create', 'Api\V1\ShelfController@store');
         Route::post('shelf/{shelf_id}/update', 'Api\V1\ShelfController@update');
         Route::post('shelf/{shelf_id}/delete', 'Api\V1\ShelfController@delete');
-        //Route::post('shelf/{shelf_id}/user/{user_id}/attach', 'Api\V1\ShelfController@attach');
+
+        Route::post('shelf/{shelf_id}/follow', 'Api\V1\ShelfController@follow');
+        Route::post('shelf/{shelf_id}/refollow', 'Api\V1\ShelfController@refollow');
         //Route::post('shelf/{shelf_id}/user/{user_id}/detach', 'Api\V1\ShelfController@detach');
 });
