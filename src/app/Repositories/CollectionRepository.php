@@ -52,7 +52,7 @@ class CollectionRepository
         return Collection::create($attributes);
     }
 
-    public function attach($shelfId, $collectionId)
+    public function update($shelfId, $collectionId)
     {
         $collection = $this->findOrFail($collectionId);
         $collection->shelf_id = $shelfId;
@@ -63,5 +63,12 @@ class CollectionRepository
     public function delete($collectionId)
     {
         Collection::destroy($collectionId);
+    }
+
+    public function attach($shelf, $collection)
+    {
+        $collection->shelf_id = $shelf->id;
+        $collection->save();
+        return $collection;
     }
 }

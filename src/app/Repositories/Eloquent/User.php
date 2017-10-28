@@ -38,4 +38,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Repositories\Eloquent\User', 'user_shelf_pairs');
     }
+
+    public function collections()
+    {
+        return $this->hasMany('App\Repositories\Eloquent\Collection');
+    }
 }

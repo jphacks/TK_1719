@@ -14,4 +14,9 @@ class Shelf extends Model
     {
         return $this->belongsToMany('App\Repositories\Eloqunet\User', 'user_shelf_pairs');
     }
+
+    public function collections()
+    {
+        return $this->belongsToMany('App\Repositories\Eloquent\Collection');
+    }
 }
