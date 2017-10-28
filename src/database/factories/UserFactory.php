@@ -32,3 +32,13 @@ $factory->define(App\Repositories\Eloquent\Shelf::class, function (Faker $faker)
         },
     ];
 });
+$factory->define(App\Repositories\Eloquent\Collection::class, function (Faker $faker) {
+    return [
+        'url' => $faker->url,
+        'title' => $faker->word,
+        'image' => $faker->imageUrl,
+        'shelf_id' => function () {
+            return factory(App\Repositories\Eloquent\Shelf::class)->create()->id;
+        },
+    ];
+});
