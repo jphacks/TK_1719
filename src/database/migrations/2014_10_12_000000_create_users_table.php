@@ -31,6 +31,15 @@ class CreateUsersTable extends Migration
 
             $table->timestamps();
         });
+        Schema::create('collections', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('url');
+            $table->string('title');
+            $table->string('image')->default('');
+            $table->string('shelf_id');
+
+            $table->timestamps();
+        });
     }
 
     /**
