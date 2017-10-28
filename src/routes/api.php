@@ -15,8 +15,8 @@ use Illuminate\Http\Request;
 
 Route::middleware('api')->prefix('v1')->group(function () {
         //Route::get('user/{user_id}/timeline', 'Api\V1\UserController@showTimeline');
-        //Route::get('user/{user_id}', 'Api\V1\UserController@showUser');
-        //Route::post('user/{user_id}/update', 'Api\V1\UserController@update');
+        Route::get('user/{user_id}', 'Api\V1\UserController@showUser');
+        Route::post('user/{user_id}/update', 'Api\V1\UserController@update');
         //Route::get('user/{user_id}/shelves', 'Api\V1\UserController@showShelves');
         //Route::get('user/{user_id}/shelves/favorite', 'Api\V1\UserController@showFavorite');
 
