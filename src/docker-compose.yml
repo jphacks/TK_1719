@@ -9,10 +9,16 @@ services:
     - MYSQL_DATABASE=jphacks
     - MYSQL_USER=jphacks
     - MYSQL_PASSWORD=jphacks
+  redis:
+    image: redis:4.0
+    restart: always
+    environment:
+    - REDIS_PASSWORD=jphacks
   php:
     image: jphacks_php
     restart: always
     depends_on:
+    - redis
     - mysql
     volumes:
     - ./php_server/entry.sh:/script/entry.sh

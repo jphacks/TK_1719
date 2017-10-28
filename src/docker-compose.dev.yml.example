@@ -4,6 +4,9 @@ services:
   mysql:
     volumes:
     - data-mysql:/var/lib/mysql
+  redis:
+    volumes:
+    - data-redis:/data
   php:
     image: jphacks:latest
     build: php_server_dev
@@ -17,4 +20,6 @@ services:
 
 volumes:
   data-mysql:
+    driver: local
+  data-redis:
     driver: local
