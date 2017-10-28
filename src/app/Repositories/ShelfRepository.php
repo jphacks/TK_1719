@@ -29,4 +29,14 @@ class ShelfRepository
     {
         return Shelf::destroy($shelfId);
     }
+
+    public function follow($shelf, $user)
+    {
+        $user->shelves()->updateExistingPivot($shelf->id, ['is_favorite' => 1]);
+    }
+
+    public function refollow($shelf, $user)
+    {
+        $user->shelves()->updateExistingPivot($shelf->id, ['is_favorite' => 0]);
+    }
 }
