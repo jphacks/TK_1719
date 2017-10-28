@@ -13,7 +13,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(App\Repositories\Eloquent\User::class, function (Faker $faker) {
     static $password;
 
     return [
@@ -21,5 +21,14 @@ $factory->define(App\User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+    ];
+});
+$factory->define(App\Repositories\Eloquent\Shelf::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'description' => $faker->sentence,
+        'owner_id' => function () {
+            return factory(App\Repositories\Eloquent\User::class)->create()->id;
+        },
     ];
 });
