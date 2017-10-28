@@ -23,6 +23,14 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        Schema::create('shelves', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->text('description');
+            $table->unsignedInteger('owner_id');
+
+            $table->timestamps();
+        });
     }
 
     /**
