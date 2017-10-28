@@ -52,4 +52,24 @@ class ShelfTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function testFollow()
+    {
+        $user = factory(User::class)->create();
+        $shelf = factory(Shelf::class)->create();
+        $response = $this->actingAs($user)
+            ->post("api/v1/shelf/$shelf->id/follow");
+
+        $response->assertStatus(200);
+    }
+
+    public function testReFollow()
+    {
+        $user = factory(User::class)->create();
+        $shelf = factory(Shelf::class)->create();
+        $response = $this->actingAs($user)
+            ->post("api/v1/shelf/$shelf->id/refollow");
+
+        $response->assertStatus(200);
+    }
 }
