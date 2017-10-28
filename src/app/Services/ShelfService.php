@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\ShelfRepository;
 use App\Repositories\Eloquent\User;
+use App\Exceptions\ShelfException;
 use DB;
 
 class ShelfService
@@ -15,9 +16,16 @@ class ShelfService
         $this->shelfRepository = $shelfRepository;
     }
 
-    public function findOrFail(int $shelfId)
+    public function findOrFail(int $shelfId, $user)
     {
-        return $this->shelfRepository->findOrFail($shelfId);
+        $shelf = $this->shelfRepository->findOrFail($shelfId);
+        if ($shelf->is_secret == 1 && $shelf->owner_id != $user->id) {
+            throw new ShelfException(
+                'Cannnot show shelf because you have no permission',
+                ShelfException::NOT_ENOUGH_PERMISSION
+            );
+        }
+        return $shelf;
     }
 
     public function create(array $attributes, User $user)
@@ -30,15 +38,29 @@ class ShelfService
         });
     }
 
-    public function update(int $shelfId, array $attributes)
+    public function update(int $shelfId, array $attributes, $user)
     {
-        return DB::transaction(function () use ($shelfId, $attributes) {
+        $shelf = $this->shelfRepository->findOrFail($shelfId);
+        if ($shelf->owner_id != $user->id) {
+            throw new ShelfException(
+                'Cannnot show shelf because you have no permission',
+                ShelfException::NOT_ENOUGH_PERMISSION
+            );
+        }
+        DB::transaction(function () use ($shelfId, $attributes) {
             return $this->shelfRepository->update($shelfId, $attributes);
         });
     }
 
-    public function delete(int $shelfId)
+    public function delete(int $shelfId, $user)
     {
+        $shelf = $this->shelfRepository->findOrFail($shelfId);
+        if ($shelf->owner_id != $user->id) {
+            throw new ShelfException(
+                'Cannnot show shelf because you have no permission',
+                ShelfException::NOT_ENOUGH_PERMISSION
+            );
+        }
         return DB::transaction(function () use ($shelfId) {
             $shelf = $this->shelfRepository->findOrFail($shelfId);
             $this->shelfRepository->delete($shelfId);

@@ -11,7 +11,7 @@ class ShelfException extends Exception
     const INTERNAL_SERVER_ERROR                       = 3;
     const IS_REFERRED                                 = 4;
     const RESOURCE_NOT_FOUND                          = 5;
-    const NOT_ENOUGH_PERMISSON                        = 6;
+    const NOT_ENOUGH_PERMISSION                       = 6;
     const NOT_OWNER                                   = 7;
 
     const COLLECTION_NOT_ACTIVATED                    = 11;

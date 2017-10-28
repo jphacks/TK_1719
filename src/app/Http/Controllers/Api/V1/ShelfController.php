@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\StoreShelfRequest;
 use App\Http\Requests\Api\V1\UpdateShelfRequest;
 use App\Services\ShelfService;
+use App\Exceptions\ShelfException;
 
 class ShelfController extends Controller
 {
@@ -18,7 +19,18 @@ class ShelfController extends Controller
 
     public function show(int $shelfId)
     {
-        $shelf = $this->shelfService->findOrFail($shelfId);
+        $user = auth()->user();
+        try {
+            $shelf = $this->shelfService->findOrFail($shelfId, $user);
+        } catch (ShelfException $e) {
+            if ($e->getCode() == ShelfException::NOT_ENOUGH_PERMISSION) {
+                return response()->json([
+                    'message' => $e->getMessage()
+                ], 400);
+            }
+
+            throw $e;
+        }
         return response()->json([
             'shelf' => $shelf
         ], 200);
@@ -54,8 +66,19 @@ class ShelfController extends Controller
         if ($request->input('description')) {
             $inputs['description'] = $request->input('description');
         }
+        $user = auth()->user();
 
-        $shelf = $this->shelfService->update($shelfId, $inputs);
+        try {
+            $shelf = $this->shelfService->update($shelfId, $inputs, $user);
+        } catch (ShelfException $e) {
+            if ($e->getCode() == ShelfException::NOT_ENOUGH_PERMISSION) {
+                return response()->json([
+                    'message' => $e->getMessage()
+                ], 400);
+            }
+
+            throw $e;
+        }
         return response()->json([
             'message' => 'Update successful',
             'shelf' => $shelf
@@ -64,8 +87,18 @@ class ShelfController extends Controller
 
     public function delete(int $shelfId)
     {
-        //TODO User who has permission can delete
-        $shelf = $this->shelfService->delete($shelfId);
+        $user = auth()->user();
+        try {
+            $shelf = $this->shelfService->delete($shelfId, $user);
+        } catch (ShelfException $e) {
+            if ($e->getCode() == ShelfException::NOT_ENOUGH_PERMISSION) {
+                return response()->json([
+                    'message' => $e->getMessage()
+                ], 400);
+            }
+
+            throw $e;
+        }
         return response()->json([
             'message' => 'Delete successful',
             'shelf' => $shelf

@@ -19,7 +19,18 @@ class CollectionController extends Controller
 
     public function show(int $collectionId)
     {
-        $collection = $this->collectionService->findOrFail($collectionId);
+        $user = auth()->user();
+        try {
+            $collection = $this->collectionService->findOrFail($collectionId, $user);
+        } catch (ShelfException $e) {
+            if ($e->getCode() == ShelfException::NOT_ENOUGH_PERMISSION) {
+                return response()->json([
+                    'message' => $e->getMessage()
+                ], 400);
+            }
+
+            throw $e;
+        }
         return response()->json([
             'collection' => $collection
         ], 200);
