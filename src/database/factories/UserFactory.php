@@ -40,5 +40,8 @@ $factory->define(App\Repositories\Eloquent\Collection::class, function (Faker $f
         'shelf_id' => function () {
             return factory(App\Repositories\Eloquent\Shelf::class)->create()->id;
         },
+        'user_id' => function () {
+            return factory(App\Repositories\Eloquent\User::class)->create()->id;
+        },
     ];
 });

@@ -12,6 +12,7 @@ class CollectionsTableSeeder extends Seeder
             'title'    => 'test',
             'image'    => base_path("tests/Resources/upload.jpg"),
             'shelf_id' => '1',
+            'user_id'  => '1',
         ]);
     }
 }

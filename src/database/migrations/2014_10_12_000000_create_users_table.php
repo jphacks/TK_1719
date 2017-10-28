@@ -46,6 +46,7 @@ class CreateUsersTable extends Migration
             $table->string('title');
             $table->string('image')->default('');
             $table->string('shelf_id');
+            $table->string('user_id');
 
             $table->timestamps();
         });
