@@ -42,10 +42,10 @@ class CollectionController extends Controller
         ], 200);
     }
 
-    public function attach(UpdateCollectionRequest $request, int $collectionId)
+    public function update(UpdateCollectionRequest $request, int $collectionId)
     {
         $shelfId = $request->input('shelf_id');
-        $collection = $this->collectionService->attach($shelfId, $collectionId);
+        $collection = $this->collectionService->update($shelfId, $collectionId);
         return response()->json([
             'message' => 'Update collection successful',
             'collection' => $collection

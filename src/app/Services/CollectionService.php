@@ -37,10 +37,10 @@ class CollectionService
         });
     }
 
-    public function attach($shelfId, $collectionId)
+    public function update($shelfId, $collectionId)
     {
         return DB::transaction(function () use ($shelfId, $collectionId) {
-            return $this->collectionRepository->attach($shelfId, $collectionId);
+            return $this->collectionRepository->update($shelfId, $collectionId);
         });
     }
 

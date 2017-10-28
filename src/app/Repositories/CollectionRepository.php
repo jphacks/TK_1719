@@ -52,7 +52,7 @@ class CollectionRepository
         return Collection::create($attributes);
     }
 
-    public function attach($shelfId, $collectionId)
+    public function update($shelfId, $collectionId)
     {
         $collection = $this->findOrFail($collectionId);
         $collection->shelf_id = $shelfId;

@@ -41,7 +41,7 @@ class CollectionTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testAttach()
+    public function testUpdate()
     {
         $user = factory(User::class)->create();
         $collection = factory(Collection::class)->create();
@@ -49,7 +49,7 @@ class CollectionTest extends TestCase
             'shelf_id' => 100
         ];
         $response = $this->actingAs($user)
-            ->post("api/v1/collection/$collection->id/attach", $params);
+            ->post("api/v1/collection/$collection->id/update", $params);
 
         $response->assertStatus(200);
     }
