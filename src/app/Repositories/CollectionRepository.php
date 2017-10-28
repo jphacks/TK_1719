@@ -64,4 +64,11 @@ class CollectionRepository
     {
         Collection::destroy($collectionId);
     }
+
+    public function attach($shelf, $collection)
+    {
+        $collection->shelf_id = $shelf->id;
+        $collection->save();
+        return $collection;
+    }
 }
