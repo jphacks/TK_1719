@@ -9,14 +9,45 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+Vue.use(VueRouter)
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('header-component', require('./components/HeaderComponent.vue'));
+Vue.component('footer-component', require('./components/FooterComponent.vue'));
+Vue.component('card-component', require('./components/CardComponent.vue'));
+Vue.component('subheader-component', require('./components/SubHeaderComponent.vue'));
+
+Vue.component('cardlayout-component', require('./components/CardLayoutComponent.vue'));
+
+// Vue.component('single-component', require('./components/SingleComponent.vue'));
+// Vue.component('user-component', require('./components/UserComponent.vue'));
+// Vue.component('shelf-component', require('./components/ShelfComponent.vue'));
+Vue.component('index-component', require('./components/IndexComponent.vue'));
+
+const comp = {}
+
+comp.index = { template: '<index-component></index-component>' }
+// comp.single = { template: '<single-component></single-component>' }
+// comp.user = { template: '<user-component></user-component>' }
+// comp.shelf = { template: '<shelf-component></shelf-component>' }
+
+const routes = [
+  { path: '/index', component: comp.index }
+  // { path: '/index', component: comp.index },
+  // { path: '/single', component: comp.single },
+  // { path: '/user', component: comp.user },
+  // { path: '/shelf', component: comp.shelf }
+]
+
+const router = new VueRouter({
+  routes // `routes: routes` の短縮表記
+})
 
 const app = new Vue({
-    el: '#app'
-});
+  router
+}).$mount('#app')
