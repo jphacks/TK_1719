@@ -1,0 +1,559 @@
+body {
+    margin: 0;
+    padding: 6rem 0;
+    min-height: 100vh;
+    width: 100%;
+    background: rgba(230, 230, 230, 1);
+    position: relative;
+    box-sizing: border-box;
+    font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+}
+
+
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+    height: 0;
+}
+
+ul {
+    padding: unset;
+    list-style: none;
+    margin: 0;
+}
+
+input{
+  border-width: 0;
+}
+
+:focus{
+  outline: 0;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+p{
+  margin: 0;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(153, 153, 153, 1);
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    z-index: 999;
+}
+
+main {
+    padding: 0 0 3rem;
+}
+
+.grid,
+.single{
+  padding-top: 3rem;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 3rem 0 1rem;
+    text-align: center;
+    font-size: .8rem;
+    background: lightgrey;
+}
+
+.h_container {
+    display: block;
+    position: relative;
+    width: 1000px;
+    margin: 0 auto;
+    height: 6rem;
+    box-sizing: border-box;
+}
+
+.h_searchbox_wrapper {
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 3rem;
+    width: 650px;
+}
+
+.h_searchbox_icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: 0;
+    line-height: 3rem;
+    width: 4rem;
+    font-size: 1.4rem;
+    text-align: center;
+    color: rgba(179, 179, 179, 1);
+}
+
+input[type="text"] {
+    height: 100%;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.h_addnew_button {
+    float: right;
+}
+
+.h_profile_wrapper {
+    position: absolute;
+    left: 750px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 3rem;
+}
+
+.h_profile_wrapper .profile_icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+.profile_icon {
+    display: block;
+    float: left;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2rem;
+    background: white;
+    margin: 0 1rem;
+}
+
+.h_profile_wrapper .profile_name {
+    float: right;
+    line-height: 3rem;
+    color: white;
+}
+
+.h_addnew_button {
+    position: absolute;
+    line-height: 2rem;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 2rem;
+    left: 700px;
+    font-size: 2rem;
+    color: white;
+}
+
+.grid {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+/*
+//////////////////////////////
+カードレイアウト
+//////////////////////////////
+*/
+
+.grid-item {
+    position: relative;
+    float: left;
+    width: 23%;
+    margin: 1%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.card_wrapper {
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    font-size: .9rem;
+}
+
+.card_container {
+    position: relative;
+    padding: .5rem 1rem;
+    height: 5rem;
+    background: white;
+}
+
+.card_container .profile_icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: rgba(204, 204, 204, 1);
+}
+
+.card_container_right {
+    position: absolute;
+    padding-left: 4rem;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.card_container_right .profile_name{
+  margin-top: 2rem;
+}
+
+.profile_name {
+    font-weight: bold;
+    font-size: .9rem;
+}
+
+.shelf_name {
+    font-size: .7rem;
+    margin-top: 5px;
+}
+
+.card_eyecatch {
+    width: 100%;
+}
+
+.card_title {
+    margin-top: .5rem;
+    line-height: 1.4rem;
+    font-size: 0.7rem;
+}
+
+.save_button {
+    width: 100%;
+    display: block;
+    line-height: 3rem;
+    text-align: center;
+    background: rgba(171, 171, 171, 1);
+    color: white;
+}
+
+/*
+//////////////////////////////
+シングルページ
+//////////////////////////////
+*/
+
+.single {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.single .card_title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.card_wrapper_next {
+    margin-top: 2rem;
+}
+
+.card_collectors {
+    line-height: 6rem;
+}
+
+.card_collectors> *{
+  color: red;
+}
+
+/*.card_eyecatch_bg{
+  width: 100%;
+  height: 500px;
+  background-image: url("./images/eyecatch-sample.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}*/
+
+/*
+//////////////////////////////
+シェルフページ
+//////////////////////////////
+*/
+
+.sub_header {
+    display: block;
+    height: 20rem;
+    text-align: center;
+    background: -webkit-gradient(linear,0% 50% ,100% 50% ,color-stop(0,rgba(204, 204, 204, 1) ),color-stop(1,rgba(179, 179, 179, 1) ));
+    background : -webkit-linear-gradient(0deg, rgba(204, 204, 204, 1) 0%, rgba(179, 179, 179, 1) 100%);
+}
+
+.shelf_title {
+    font-size: 4rem;
+    padding: 4rem 0 1rem;
+    margin: 0;
+}
+
+/*
+//////////////////////////////
+モーダル
+//////////////////////////////
+*/
+
+.modal_content_wrapper{
+  display: block;
+  position: fixed;
+  background: rgba(0,0,0,0.5);
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 99;
+  color: white;
+}
+
+.modal_content_container{
+  position: relative;
+  width: 1000px;
+  margin: 0 auto;
+  padding-top: 7rem;
+}
+
+.urlbox_wrapper,
+.shelfs_search_container{
+  line-height: 3rem;
+  height: 3rem;
+}
+
+input{
+  height: 100%;
+  line-height: inherit;
+  padding-left: 1rem;
+}
+
+.shelfs{
+  background : rgba(153, 153, 153, 1);
+  width: 100%;
+  height: 400px;
+}
+
+.shelfs_left,
+.shelfs_right{
+  position: relative;
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
+.shelfs_right img{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.shelfs_left{
+  background : rgba(204, 204, 204, 1);
+}
+
+.shelfs_search_wrapper {
+    height: 80px;
+    padding: 1rem;
+    box-sizing: border-box;
+    background: white;
+}
+
+.shelfs_search_container{
+  position: relative;
+}
+
+.shelfs_search_container input{
+  background : rgba(230, 230, 230, 1);
+}
+
+.shelfs_lists_wrapper {
+    height: 320px;
+    overflow-y: scroll;
+}
+
+.shelfs_lists_container {
+    position: relative;
+    margin: 0 1rem;
+}
+
+.shelf_list {
+    position: relative;
+    margin-top: .7rem;
+    height: 3rem;
+    line-height: 3rem;
+    background: white;
+    color: darkslategrey;
+    padding-left: 1rem;
+}
+
+.new_shelf {
+    background: none;
+    border: 3px dashed rgba(255, 255, 255, 0.63);
+    box-sizing: border-box;
+}
+
+#new_shelf_box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: none;
+    color: white;
+    width: 100%;
+}
+
+.new_shelf i,
+.add_this_shelf {
+  position: absolute;
+  right: 0;
+  width: 4rem;
+  text-align: center;
+  line-height: inherit;
+}
+
+.sub_header.shelf{
+  height: 15rem;
+}
+
+/*
+//////////////////////////////
+マイページ
+//////////////////////////////
+*/
+
+.sub_header_container {
+    display: block;
+    position: relative;
+    width: 1000px;
+    height: 100%;
+    margin: auto;
+}
+
+.sh_icon_wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 10rem;
+    width: auto;
+}
+
+.sh_icon_wrapper .profile_icon {
+    height: 100%;
+    width: auto;
+    border-radius: 100%;
+}
+
+.sh_info_wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 15rem;
+    text-align: left;
+}
+
+.sh_user_name {
+    margin: 5.5rem 0 1rem;
+    font-size: 3rem;
+    color: white;
+}
+
+.sh_user_name i {
+    font-size: 2rem;
+    margin: 0 1.5rem;
+}
+
+.sh_info_wrapper p {
+    margin: .5rem 0;
+}
+
+.num {
+    font-size: 120%;
+    margin-right: .3rem;
+    font-weight: bold;
+}
+
+#fr_shl_num {
+    margin-left: 1rem;
+}
+
+.container_a > *{
+  display: inline-block;
+}
+
+.picked_eyecatchs{
+  width: 100%;
+}
+
+.main_shelf_name,
+.card_wrapper .shelf_col_num {
+    display: inline-block;
+    line-height: 5rem;
+}
+
+.main_shelf_name{
+  float: left;
+  font-weight: bold;
+}
+
+.card_wrapper .shelf_col_num{
+  float: right;
+  font-size: .7rem;
+}
+
+.card_new_shelf {
+    margin-left: 1rem;
+}
+
+/*
+//////////////////////////////
+モーダルリスト
+//////////////////////////////
+*/
+
+.modal_content_container.small_container {
+    width: 500px;
+    padding-top: 8rem;
+}
+
+.modal_lists_header {
+    height: 5rem;
+    background: rgba(255, 255, 255, 1);
+    color: rgba(0, 0, 0, 0.5);
+    padding: 3rem 3rem 1rem;
+}
+
+.modal_lists_header h3 {
+    font-size: 1.9rem;
+    margin: .6rem 0;
+}
+
+.modal_lists_body {
+    display: block;
+    overflow-y: scroll;
+    height: 500px;
+    background: white;
+}
+
+.modal_list {
+    line-height: 4rem;
+    padding: 0 3rem;
+    color: rgba(0, 0, 0, 0.5);
+    background: rgba(242, 242, 242, 1);
+}
+
+.modal_list + .modal_list {
+    margin-top: 2px;
+}
+
+.modal_list_attach {
+    float: right;
+}
