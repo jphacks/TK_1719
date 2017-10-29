@@ -36,9 +36,32 @@ class ShelfController extends Controller
         ], 200);
     }
 
-    public function search(array $attributes)
+    public function search()
     {
-        //Not yet implements
+        //FIXME Not use mock
+        $data = [];
+        $resource1 = [
+            'name' => 'Kumpo',
+            'image' => 'https://avatars0.githubusercontent.com/u/17805812?s=460&v=4',
+            'shelf_name' => 'クンポの棚',
+        ];
+        $resource2 = [
+            'name' => 'Matsu',
+            'image' => 'https://avatars0.githubusercontent.com/u/25384121?s=460&v=4',
+            'shelf_name' => 'JSライブラリ集',
+        ];
+        $resource3 = [
+            'name' => 'Yuki',
+            'image' => 'https://avatars0.githubusercontent.com/u/17805812?s=460&v=4',
+            'shelf_name' => 'プログラミング教材一覧',
+        ];
+        $data = [
+            $resource1, $resource2, $resource3
+        ];
+        return response()->json([
+            'message' => 'Create successful',
+            'data' => $data
+        ], 200);
     }
 
     public function store(StoreShelfRequest $request)
