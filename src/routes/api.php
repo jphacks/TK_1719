@@ -25,7 +25,7 @@ Route::middleware('api')->prefix('v1')->group(function () {
         Route::post('collection/{collection_id}/shelf/{shelf_id}/attach', 'Api\V1\CollectionController@attach');
 
         Route::get('shelf/{shelf_id}', 'Api\V1\ShelfController@show');
-        //Route::get('shelf/search', 'Api\V1\ShelfController@search');
+        Route::get('shelf/search', 'Api\V1\ShelfController@search');
         Route::post('shelf/create', 'Api\V1\ShelfController@store');
         Route::post('shelf/{shelf_id}/update', 'Api\V1\ShelfController@update');
         Route::post('shelf/{shelf_id}/delete', 'Api\V1\ShelfController@delete');
