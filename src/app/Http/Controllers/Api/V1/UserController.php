@@ -24,6 +24,28 @@ class UserController extends Controller
         ], 200);
     }
 
+    public function showTimeline(int $userId)
+    {
+        $resource1 = [
+            'name' => 'Kumpo',
+            'image' => 'https://avatars0.githubusercontent.com/u/17805812?s=460&v=4',
+        ];
+        $resource2 = [
+            'name' => 'Matsu',
+            'image' => 'https://avatars0.githubusercontent.com/u/25384121?s=460&v=4',
+        ];
+        $resource3 = [
+            'name' => 'Yuki',
+            'image' => 'https://avatars0.githubusercontent.com/u/17805812?s=460&v=4',
+        ];
+        $activities = [
+            $resource1, $resource2, $resource3
+        ];
+        return response()->json([
+            'activities' => $activities,
+        ], 200);
+    }
+
     public function update(UpdateUserRequest $request, int $userId)
     {
         $user = auth()->user();
