@@ -19,14 +19,14 @@
           <div class="card_container">
             <p class="card_title">かっこよすぎるバーベキューテク6選 - アウトドア初心者のパパでも簡単!</p>
           </div>
-          <a class="save_button" href="#">シェルフへ</a>
+          <a class="save_button" href="/shelf">シェルフへ</a>
         </div>
 
         <div class="card_wrapper card_wrapper_next">
           <div class="card_container">
             <img class="profile_icon" src="" alt="">
             <div class="card_container_right">
-              <p class="card_collectors"><a href="">Toshiaki Matsumuraさん</a>と<a href="">その他</a>が保存しました</p>
+              <p class="card_collectors"><a href="/user">Toshiaki Matsumuraさん</a>と<a href="">その他</a>が保存しました</p>
             </div>
           </div>
         </div>

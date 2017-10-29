@@ -6,8 +6,10 @@
         <input type="text" name="" value="">
       </div>
       <div class="h_profile_wrapper">
-        <img class="profile_icon" src="" alt="">
-        <p class="profile_name" >Natsuya Yada</p>
+        <a href="/user">
+          <img class="profile_icon" src="" alt="">
+          <p class="profile_name" >Natsuya Yada</p>
+        </a>
       </div>
       <div class="h_addnew_button">
         <i class="fa fa-plus" aria-hidden="true"></i>

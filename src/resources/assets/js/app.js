@@ -21,6 +21,8 @@ Vue.component('header-component', require('./components/HeaderComponent.vue'));
 Vue.component('footer-component', require('./components/FooterComponent.vue'));
 Vue.component('card-component', require('./components/CardComponent.vue'));
 Vue.component('shelfcard-component', require('./components/ShelfCardComponent.vue'));
+Vue.component('modal-component', require('./components/ModalComponent.vue'));
+Vue.component('modalfr-component', require('./components/ModalFrComponent.vue'));
 
 Vue.component('single-component', require('./components/SingleComponent.vue'));
 Vue.component('user-component', require('./components/UserComponent.vue'));

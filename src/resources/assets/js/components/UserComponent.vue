@@ -14,8 +14,8 @@
           <h1 class="sh_user_name">Natsuya Yada<i class="fa fa-pencil-square-o" aria-hidden="true"></i></h1>
           <p>フォロー</p>
           <p class="container_a">
-            <a id="fr_usr_num" href="#"><span class="num">5</span>ユーザー</a>
-            <a id="fr_shl_num" href="#"><span class="num">5</span>シェルフ</a>
+            <a id="fr_usr_num" href=""><span class="num">5</span>ユーザー</a>
+            <a id="fr_shl_num" href=""><span class="num">5</span>シェルフ</a>
           </p>
         </div>
 
