@@ -20,32 +20,30 @@ Vue.use(VueRouter)
 Vue.component('header-component', require('./components/HeaderComponent.vue'));
 Vue.component('footer-component', require('./components/FooterComponent.vue'));
 Vue.component('card-component', require('./components/CardComponent.vue'));
-Vue.component('subheader-component', require('./components/SubHeaderComponent.vue'));
+Vue.component('shelfcard-component', require('./components/ShelfCardComponent.vue'));
 
-Vue.component('cardlayout-component', require('./components/CardLayoutComponent.vue'));
-
-// Vue.component('single-component', require('./components/SingleComponent.vue'));
-// Vue.component('user-component', require('./components/UserComponent.vue'));
-// Vue.component('shelf-component', require('./components/ShelfComponent.vue'));
+Vue.component('single-component', require('./components/SingleComponent.vue'));
+Vue.component('user-component', require('./components/UserComponent.vue'));
+Vue.component('shelf-component', require('./components/ShelfComponent.vue'));
 Vue.component('index-component', require('./components/IndexComponent.vue'));
 
 const comp = {}
 
 comp.index = { template: '<index-component></index-component>' }
-// comp.single = { template: '<single-component></single-component>' }
-// comp.user = { template: '<user-component></user-component>' }
-// comp.shelf = { template: '<shelf-component></shelf-component>' }
+comp.single = { template: '<single-component></single-component>' }
+comp.user = { template: '<user-component></user-component>' }
+comp.shelf = { template: '<shelf-component></shelf-component>' }
 
 const routes = [
-  { path: '/index', component: comp.index }
-  // { path: '/index', component: comp.index },
-  // { path: '/single', component: comp.single },
-  // { path: '/user', component: comp.user },
-  // { path: '/shelf', component: comp.shelf }
+  { path: '/', component: comp.index },
+  { path: '/user', component: comp.user },
+  { path: '/shelf', component: comp.shelf },
+  { path: '/single', component: comp.single }
 ]
 
 const router = new VueRouter({
-  routes // `routes: routes` の短縮表記
+  routes: routes,
+  mode: 'history'
 })
 
 const app = new Vue({

@@ -1,9 +1,20 @@
 <template>
-<div>
-  <header-component></header-component>
-  <cardlayout-component></cardlayout-component>
-  <footer-component></footer-component>
-</div>
+
+  <div>
+    <header-component></header-component>
+
+    <main class="clearfix">
+        <div class="grid">
+          <card-component></card-component>
+          <card-component></card-component>
+          <card-component></card-component>
+          <card-component></card-component>
+        </div>
+    </main>
+
+    <footer-component></footer-component>
+  </div>
+
 </template>
 
 <script>
