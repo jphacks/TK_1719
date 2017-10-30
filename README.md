@@ -1,6 +1,6 @@
 # SHELF
 
-[![Product Name](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](https://www.youtube.com/watch?v=3TFJzWsX0AM&feature=youtu.be)
+[![Product Name](https://www.youtube.com/upload_thumbnail?v=3TFJzWsX0AM&t=hqdefault&ts=1509330208028)](https://www.youtube.com/watch?v=3TFJzWsX0AM&feature=youtu.be)
 
 ## 製品概要
 ### Search Tech => SeaTech
