@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/js/view.js": "/js/view.js",
     "/js/masonry.pkgd.min.js": "/js/masonry.pkgd.min.js",
     "/css/master.css": "/css/master.css"
 }

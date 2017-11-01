@@ -11,23 +11,9 @@
   </head>
     <body>
         <div class="flex-center position-ref full-height">
-            <!-- @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                    @endauth
-                </div>
-            @endif -->
-
             <div id="app">
-                <router-view></router-view>
             </div>
         </div>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.js" charset="utf-8"></script>
-        <script src="{{ asset('js/app.js') }}" charset="utf-8"></script>
+      <script src="{{ mix('js/view.js') }}" charset="utf-8"></script>
     </body>
 </html>
