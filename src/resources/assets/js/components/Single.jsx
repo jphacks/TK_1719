@@ -1,11 +1,8 @@
 import React from 'react'
-import Header from './Header'
-import Footer from './Footer'
 
 const Single = () => {
   return (
     <div>
-      <Header />
       <main className="clearfix">
         <div className="single">
           <div className="card_wrapper">
@@ -32,7 +29,6 @@ const Single = () => {
           </div>
         </div>
     </main>
-    <Footer />
     </div>
   );
 };
