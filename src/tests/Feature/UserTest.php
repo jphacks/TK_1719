@@ -25,6 +25,15 @@ class UserTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function testShowSelf()
+    {
+        $user = factory(User::class)->create();
+        $response = $this->actingAs($user)
+            ->get('api/v1/user/self');
+
+        $response->assertStatus(200);
+    }
+
     public function testUpdate()
     {
         $user = factory(User::class)->create([
