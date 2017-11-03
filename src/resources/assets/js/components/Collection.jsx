@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Card = () => {
+const Collection = () => {
   return (
     <div className="grid-item card_wrapper">
       <div className="card_container">
@@ -14,9 +15,11 @@ const Card = () => {
       <div className="card_container">
         <p className="card_title">かっこよすぎるバーベキューテク6選 - アウトドア初心者のパパでも簡単!</p>
       </div>
-      <a className="save_button" href="#">シェルフへ</a>
+        <Link to="/single">
+          <button className="save_button">シェルフへ</button>
+        </Link>
     </div>
   );
 }
 
-export default Card
+export default Collection

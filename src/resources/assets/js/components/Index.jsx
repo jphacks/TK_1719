@@ -1,16 +1,14 @@
 import React from 'react'
-import Header from './Header'
-import Card from './Card'
+import Collection from './Collection'
 
 const Index = () => {
   return (
     <div>
-      <Header />
       <main className=''>
         <div className="grid">
-          <Card />
-          <Card />
-          <Card />
+          <Collection />
+          <Collection />
+          <Collection />
         </div>
       </main>
     </div>

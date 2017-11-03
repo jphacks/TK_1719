@@ -1,12 +1,9 @@
 import React from 'react'
-import Header from './Header'
-import Footer from './Footer'
 import ShelfCard from './ShelfCard'
 
 const User = () => {
   return (
     <div>
-      <Header />
       <main className="clearfix">
         <div className="sub_header">
           <div className="sub_header_container">
@@ -31,7 +28,6 @@ const User = () => {
           <ShelfCard />
         </div>
       </main>
-      <Footer />
     </div>
   );
 };

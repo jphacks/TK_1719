@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
@@ -9,8 +10,10 @@ const Header = () => {
           <input type="text" name="" value="" />
         </div>
         <div className="h_profile_wrapper">
-          <img className="profile_icon" src="" alt="" />
-          <p className="profile_name" >Natsuya Yada</p>
+          <Link to="/profile">
+            <img className="profile_icon" src="" alt="" />
+            <p className="profile_name" >Natsuya Yada</p>
+          </Link>
         </div>
         <div className="h_addnew_button">
           <i className="fa fa-plus" aria-hidden="true"></i>
