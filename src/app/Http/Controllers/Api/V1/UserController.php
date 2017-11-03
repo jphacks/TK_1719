@@ -16,6 +16,14 @@ class UserController extends Controller
         $this->userService = $userService;
     }
 
+    public function showSelf()
+    {
+        $user = auth()->user();
+        return response()->json([
+            'user' => $user
+        ], 200);
+    }
+
     public function showUser(int $userId)
     {
         $user = $this->userService->findOrFail($userId);
