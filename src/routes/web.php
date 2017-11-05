@@ -14,9 +14,9 @@
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/{any}', function () {
         return view('welcome');
-    })->where('any', '(?!log)(?!api).*');
+    })->where('any', '(?!log)(?!api)(?!auth).*');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login.showLoginForm');
+Route::post('login', 'Auth\LoginController@login')->name('login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
