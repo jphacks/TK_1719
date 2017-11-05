@@ -18,7 +18,7 @@ class UserController extends Controller
 
     public function showSelf()
     {
-        $user = auth()->user();
+        $user = $this->userService->getCurrectUser();
         return response()->json([
             'user' => $user
         ], 200);
@@ -56,7 +56,7 @@ class UserController extends Controller
 
     public function update(UpdateUserRequest $request, int $userId)
     {
-        $user = auth()->user();
+        $user = $this->userService->getCurrectUser();
         if ($user->id != $userId) {
             return response()->json([
                 'message' => 'You have no permission'

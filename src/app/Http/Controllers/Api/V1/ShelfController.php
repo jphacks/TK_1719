@@ -7,19 +7,21 @@ use App\Http\Requests\Api\V1\StoreShelfRequest;
 use App\Http\Requests\Api\V1\UpdateShelfRequest;
 use App\Services\ShelfService;
 use App\Exceptions\ShelfException;
+use App\Services\UserService;
 
 class ShelfController extends Controller
 {
     protected $shelfService;
 
-    public function __construct(ShelfService $shelfService)
+    public function __construct(ShelfService $shelfService, UserService $userService)
     {
         $this->shelfService = $shelfService;
+        $this->userService = $userService;
     }
 
     public function show(int $shelfId)
     {
-        $user = auth()->user();
+        $user = $this->userService->getCurrectUser();
         try {
             $shelf = $this->shelfService->findOrFail($shelfId, $user);
         } catch (ShelfException $e) {
@@ -71,7 +73,7 @@ class ShelfController extends Controller
             'description' => $request->input('description', ''),
             'is_secret'   => $request->input('is_secret', 0),
         ];
-        $user = auth()->user();
+        $user = $this->userService->getCurrectUser();
         $shelf = $this->shelfService->create($inputs, $user);
 
         return response()->json([
@@ -89,7 +91,7 @@ class ShelfController extends Controller
         if ($request->input('description')) {
             $inputs['description'] = $request->input('description');
         }
-        $user = auth()->user();
+        $user = $this->userService->getCurrectUser();
 
         try {
             $shelf = $this->shelfService->update($shelfId, $inputs, $user);
@@ -110,7 +112,7 @@ class ShelfController extends Controller
 
     public function delete(int $shelfId)
     {
-        $user = auth()->user();
+        $user = $this->userService->getCurrectUser();
         try {
             $shelf = $this->shelfService->delete($shelfId, $user);
         } catch (ShelfException $e) {
@@ -130,7 +132,7 @@ class ShelfController extends Controller
 
     public function follow(int $shelfId)
     {
-        $user = auth()->user();
+        $user = $this->userService->getCurrectUser();
         $shelf = $this->shelfService->follow($shelfId, $user);
         return response()->json([
             'message' => 'Attach successful',
@@ -140,7 +142,7 @@ class ShelfController extends Controller
 
     public function refollow(int $shelfId)
     {
-        $user = auth()->user();
+        $user = $this->userService->getCurrectUser();
         $shelf = $this->shelfService->refollow($shelfId, $user);
         return response()->json([
             'message' => 'Detach successful',
