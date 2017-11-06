@@ -50,7 +50,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if ($request->expectsJson()) {
+        if ($request->is('api/*')) {
             if ($exception instanceof ValidationException) {
                 return response()->json([
                     'code' => 1,

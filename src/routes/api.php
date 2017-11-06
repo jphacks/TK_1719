@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('api')->prefix('v1')->group(function () {
+    Route::post('authenticate', 'Auth\LoginController@authenticate')->name('auth');
+    Route::group(['middleware' => 'jwt.auth'], function () {
         Route::get('user/self', 'Api\V1\UserController@showSelf');
         Route::get('user/{user_id}/timeline', 'Api\V1\UserController@showTimeline');
         Route::get('user/{user_id}', 'Api\V1\UserController@showUser');
@@ -33,4 +35,5 @@ Route::middleware('api')->prefix('v1')->group(function () {
 
         Route::post('shelf/{shelf_id}/follow', 'Api\V1\ShelfController@follow');
         Route::post('shelf/{shelf_id}/refollow', 'Api\V1\ShelfController@refollow');
+    });
 });

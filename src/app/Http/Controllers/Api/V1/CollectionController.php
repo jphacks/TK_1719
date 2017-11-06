@@ -7,19 +7,21 @@ use App\Http\Requests\Api\V1\StoreCollectionRequest;
 use App\Http\Requests\Api\V1\UpdateCollectionRequest;
 use App\Exceptions\ShelfException;
 use App\Services\CollectionService;
+use App\Services\UserService;
 
 class CollectionController extends Controller
 {
     protected $collectionService;
 
-    public function __construct(CollectionService $collectionService)
+    public function __construct(CollectionService $collectionService, UserService $userService)
     {
         $this->collectionService = $collectionService;
+        $this->userService = $userService;
     }
 
     public function show(int $collectionId)
     {
-        $user = auth()->user();
+        $user = $this->userService->getCurrectUser();
         try {
             $collection = $this->collectionService->findOrFail($collectionId, $user);
         } catch (ShelfException $e) {
@@ -43,7 +45,7 @@ class CollectionController extends Controller
 
     public function store(StoreCollectionRequest $request)
     {
-        $user = auth()->user();
+        $user = $this->userService->getCurrectUser();
         $inputs = [
             'url'      => $request->input('url'),
             'shelf_id' => $request->input('shelf_id'),
@@ -76,7 +78,7 @@ class CollectionController extends Controller
 
     public function attach($collectionId, $shelfId)
     {
-        $user = auth()->user();
+        $user = $this->userService->getCurrectUser();
         try {
             $this->collectionService->attach($collectionId, $shelfId, $user);
         } catch(ShelfException $e) {

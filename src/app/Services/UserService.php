@@ -19,6 +19,21 @@ class UserService
         return $this->userRepository->findOrFail($userId);
     }
 
+    public function findByEmail($email)
+    {
+        return $this->userRepository->findByEmail($email);
+    }
+
+    public function getCurrectUser()
+    {
+        return $this->userRepository->getCurrectUser();
+    }
+
+    public function authenticate(array $credentials)
+    {
+        return $this->userRepository->authenticate($credentials);
+    }
+
     public function update($user, $attributes)
     {
         return DB::transaction(function () use ($user, $attributes) {
