@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
+use App\Http\Requests\AuthUserRequest;
 use JWTAuth;
 use App\Services\UserService;
 
@@ -43,7 +43,7 @@ class LoginController extends Controller
         $this->userService = $userService;
     }
 
-    public function authenticate(Request $request)
+    public function authenticate(AuthUserRequest $request)
     {
         $email = $request->input('email');
         $password = $request->input('password');
@@ -54,7 +54,7 @@ class LoginController extends Controller
 
         $token = $this->userService->authenticate($credentials);
 
-        $user = $this->userService->findByEmail($email);
+        $user = $this->userService->getCurrectUser();
         return response()->json([
             'message' => 'Succeed your authentication',
             'user' => $user,
