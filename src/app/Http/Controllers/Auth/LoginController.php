@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Http\Requests\AuthUserRequest;
-use JWTAuth;
 use App\Services\UserService;
+use App\Http\Requests\AuthUserRequest;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -48,17 +48,20 @@ class LoginController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
         $credentials = [
-            'email' => $email,
+            'email'    => $email,
             'password' => $password,
         ];
 
+        $isAuth = Auth::attempt([
+            'email'    => $email,
+            'password' => $password,
+        ]);
         $token = $this->userService->authenticate($credentials);
 
-        $user = $this->userService->getCurrectUser();
-        return response()->json([
-            'message' => 'Succeed your authentication',
-            'user' => $user,
-            'token' => $token,
-        ], 200);
+        if (!$isAuth || !$token) {
+            return redirect()->back();
+        }
+
+        return redirect()->intended('/')->cookie('jwt_token', $token);
     }
 }

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\StoreUserRequest;
 use App\Http\Requests\Api\V1\UpdateUserRequest;
 use App\Services\UserService;
+use App\Http\Requests\AuthUserRequest;
+use JWTAuth;
 
 class UserController extends Controller
 {
@@ -14,6 +16,25 @@ class UserController extends Controller
     public function __construct(UserService $userService)
     {
         $this->userService = $userService;
+    }
+
+    public function authenticate(AuthUserRequest $request)
+    {
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $credentials = [
+            'email' => $email,
+            'password' => $password,
+        ];
+
+        $token = $this->userService->authenticate($credentials);
+
+        $user = $this->userService->getCurrectUser();
+        return response()->json([
+            'message' => 'Succeed your authentication',
+            'user' => $user,
+            'token' => $token,
+        ], 200);
     }
 
     public function showSelf()
