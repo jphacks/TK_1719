@@ -21,12 +21,9 @@ class CollectionService
         $this->shelfRepository      = $shelfRepository;
     }
 
-    public function findOrFail($collectionId, $user)
+    public function findOrFail($collectionId)
     {
         $collection =  $this->collectionRepository->findOrFail($collectionId);
-        if ($collection->shelf->is_secret && $collection->shelf->user_id != $user->id) {
-            throw new ShelfException('You have no permission', ShelfException::NOT_ENOUGH_PERMISSION);
-        }
         return $collection;
     }
 
