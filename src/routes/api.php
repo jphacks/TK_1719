@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('api')->prefix('v1')->group(function () {
-    Route::post('authenticate', 'Auth\LoginController@authenticate')->name('auth');
+    Route::post('authenticate', 'Api\V1\UserController@authenticate')->name('auth');
     Route::group(['middleware' => 'jwt.auth'], function () {
         Route::get('user/self', 'Api\V1\UserController@showSelf');
         Route::get('user/{user_id}/timeline', 'Api\V1\UserController@showTimeline');
