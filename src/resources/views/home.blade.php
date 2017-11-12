@@ -1,23 +1,19 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
+  <head>
+  <meta charset="utf-8">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>shelf</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/master.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./js/masonry.pkgd.min.js" charset="utf-8"></script>
+  </head>
+    <body>
+        <div class="flex-center position-ref full-height">
+            <div id="app">
             </div>
         </div>
-    </div>
-</div>
-@endsection
+      <script src="{{ mix('js/view.js') }}" charset="utf-8"></script>
+    </body>
+</html>
