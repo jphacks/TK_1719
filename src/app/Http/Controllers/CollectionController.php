@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Services\CollectionService;
 
 class CollectionController extends Controller
 {
+    protected $collectionService;
+
+    public function __construct(CollectionService $collectionService) {
+        $this->collectionService = $collectionService;
+    }
+
     public function index()
     {
         return view('collection.index');
@@ -13,6 +19,7 @@ class CollectionController extends Controller
 
     public function show(int $collectionId)
     {
-        return view('collection.show');
+        $collection = $this->collectionService->findOrFail($collectionId);
+        return view('collection.show', ['collection' => $collection]);
     }
 }
