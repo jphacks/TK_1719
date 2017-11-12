@@ -20,15 +20,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/{user_id}', 'UserController@show')
         ->name('user.show');
 
-    //TODO open interface for shelf
-    Route::get('/shelves', 'ShelfController@index')
+    Route::get('/user/{user_id}/shelves', 'ShelfController@index')
         ->name('shelf.index');
+
+    //TODO open interface for shelf
     Route::get('/shelves/{shelf_id}', 'ShelfController@show')
         ->name('shelf.show');
 
     //TODO open iterface for collection
-    Route::get('/collections', 'CollectionController@index')
-        ->name('collection.index');
     Route::get('/collections/{collection_id}', 'CollectionController@show')
         ->name('collection.show');
 });
