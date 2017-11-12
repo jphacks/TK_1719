@@ -17,9 +17,6 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     //TODO open interface for user
-    Route::get('/user/self', function () {
-        return view('user.index');
-    })->name('user.index');
     Route::get('/user/{user_id}', function () {
         return view('show');
     })->name('user.show');
