@@ -17,6 +17,6 @@ class Shelf extends Model
 
     public function collections()
     {
-        return $this->belongsToMany('App\Repositories\Eloquent\Collection');
+        return $this->hasMany('App\Repositories\Eloquent\Collection');
     }
 }

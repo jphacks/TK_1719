@@ -2,17 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Services\UserService;
+use App\Services\ShelfService;
 
 class ShelfController extends Controller
 {
-    public function index()
+    protected $shelfService;
+    protected $userService;
+
+    public function __construct(
+        ShelfService $shelfService,
+        UserService $userService
+    ) {
+        $this->userService = $userService;
+        $this->shelfService = $shelfService;
+    }
+
+    public function index($userId)
     {
-        return view('shelf.index');
+        $user = $this->userService->findOrFail($userId);
+        $shelves = $user->shelves;
+
+        return view('shelf.index', ['shelves' => $shelves]);
     }
 
     public function show(int $shelfId)
     {
-        return view('shelf.show');
+        $shelf = $this->shelfService->findOrFail($shelfId);
+        $collections = $shelf->collections;
+        return view('shelf.show', [
+            'shelf' => $shelf,
+            'collections' => $collections,
+        ]);
     }
 }
