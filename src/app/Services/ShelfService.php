@@ -16,15 +16,9 @@ class ShelfService
         $this->shelfRepository = $shelfRepository;
     }
 
-    public function findOrFail(int $shelfId, $user)
+    public function findOrFail(int $shelfId)
     {
         $shelf = $this->shelfRepository->findOrFail($shelfId);
-        if ($shelf->is_secret == 1 && $shelf->owner_id != $user->id) {
-            throw new ShelfException(
-                'Cannnot show shelf because you have no permission',
-                ShelfException::NOT_ENOUGH_PERMISSION
-            );
-        }
         return $shelf;
     }
 
