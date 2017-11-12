@@ -15,7 +15,7 @@ class AuthUserRequest extends FormRequest
     {
         return [
             'email'    => 'required|email',
-            'password' => 'required|min:8|max:255|confirmed|regex:{^[ -\~]+$}',
+            'password' => 'required|min:8|max:255|regex:{^[ -\~]+$}',
         ];
     }
 }
