@@ -2,12 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Services\UserService;
 
 class UserController extends Controller
 {
-    public function show()
+    protected $userService;
+
+    public function __construct(UserService $userService)
     {
-        return view('user.show');
+        $this->userService = $userService;
+    }
+
+    public function show($userId)
+    {
+        $user = $this->userService->findOrFail($userId);
+        return view('user.show', ['user' => $user]);
     }
 }
